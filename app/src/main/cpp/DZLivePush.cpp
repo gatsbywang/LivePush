@@ -12,6 +12,11 @@ DZLivePush::DZLivePush(const char *liveUrl, DZJNICall *pJNICall) {
 }
 
 DZLivePush::~DZLivePush() {
+    if(pRtmp !=NULL){
+        RTMP_Close(pRtmp);
+        free(pRtmp);
+        pRtmp = NULL;
+    }
     if(liveUrl !=NULL){
         free(liveUrl);
         liveUrl = NULL;
@@ -21,6 +26,8 @@ DZLivePush::~DZLivePush() {
         delete (pPacketQueue);
         pPacketQueue =NULL;
     }
+
+
 }
 
 void *initConnectFunc(void *context){

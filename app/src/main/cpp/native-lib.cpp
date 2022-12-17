@@ -37,3 +37,18 @@ Java_com_example_livepush_LivePush_nInitConnect(JNIEnv *env,jobject instance,jst
 
     env->ReleaseStringUTFChars(url,pUrl);
 }
+
+
+extern "C"
+JNIEXPORT void JNICALL
+Java_com_example_livepush_LivePush_nStop(JNIEnv *env, jobject thiz) {
+    if(pLivePush !=NULL){
+        delete (pLivePush);
+        pLivePush = NULL;
+    }
+
+    if(pJniCall !=NULL){
+        delete (pJniCall);
+        pJniCall = NULL;
+    }
+}

@@ -27,4 +27,10 @@ public class MainActivity extends AppCompatActivity {
         });
         mLivePush.initConnect();
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mLivePush.stop();
+    }
 }
